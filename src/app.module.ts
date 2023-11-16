@@ -6,6 +6,7 @@ import { ClubModule } from './club/club.module';
 import { ClubEntity } from './club/club.entity';
 import { SocioModule } from './socio/socio.module';
 import { SocioEntity } from './socio/socio.entity';
+import { ClubSocioModule } from './club-socio/club-socio.module';
 
 @Module({
   imports: [
@@ -25,7 +26,7 @@ import { SocioEntity } from './socio/socio.entity';
       keepConnectionAlive: true,
     }),    
     ClubModule, 
-    SocioModule],
+    SocioModule, ClubSocioModule],
   controllers: [AppController],
   providers: [AppService],
 })

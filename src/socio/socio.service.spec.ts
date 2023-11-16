@@ -71,7 +71,7 @@ describe('SocioService', () => {
       name: faker.lorem.sentence({ min: 3, max: 6 }),
       description: faker.lorem.paragraphs({ min: 3, max: 6 }),
       image: faker.image.url(),
-      foundationDate: faker.date.past().toString(),  
+      foundationDate: faker.date.past().toString(), 
       socios: [],
     };
 
