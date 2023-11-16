@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  socialclub-db:
+    image: postgres:13-alpine
+    container_name: "socialclub-pg"
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mangoclub
+      - POSTGRES_DB=socialclub
+    networks:
+      -  socialclub-net
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+  pg_data:
+  pgadmin-data:  
+
+networks:
+  socialclub-net:
+    driver: bridge
