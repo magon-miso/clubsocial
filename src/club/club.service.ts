@@ -23,6 +23,8 @@ export class ClubService {
   }
 
   async create(club: ClubEntity, ): Promise<ClubEntity> {
+    if (club.description.length>100) 
+      throw new BusinessLogicException('The club description is too long', BusinessError.PRECONDITION_FAILED, );
     return await this.clubRepo.save(club);
   }
 
@@ -30,7 +32,11 @@ export class ClubService {
     const persistedClub: ClubEntity = await this.clubRepo.findOne({ where: { id } });
     if (!persistedClub)
       throw new BusinessLogicException('The club with the given id was not found', BusinessError.NOT_FOUND,);
-      club.id = id;
+
+    if (club.description.length>100) 
+      throw new BusinessLogicException('The club description is too long', BusinessError.PRECONDITION_FAILED, );
+
+    club.id = id;
     return await this.clubRepo.save(club);
   }
 

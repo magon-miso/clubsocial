@@ -68,8 +68,8 @@ describe('SocioService', () => {
   it('create should return a new socio', async () => {
     const clubEntity: ClubEntity = {
       id: '',
-      name: faker.lorem.sentence({ min: 3, max: 6 }),
-      description: faker.lorem.paragraphs({ min: 3, max: 6 }),
+      name: faker.company.name(),
+      description: faker.lorem.words(6),
       image: faker.image.url(),
       foundationDate: faker.date.past().toString(), 
       socios: [],

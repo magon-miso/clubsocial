@@ -17,16 +17,12 @@ import { ClubSocioModule } from './club-socio/club-socio.module';
       username: 'postgres',
       password: 'mangoclub',
       database: 'socialclub',
-      entities: [
-        ClubEntity,
-        SocioEntity,
-      ],
+      entities: [ ClubEntity, SocioEntity, ],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,
     }),    
-    ClubModule, 
-    SocioModule, ClubSocioModule],
+    ClubModule, SocioModule, ClubSocioModule],
   controllers: [AppController],
   providers: [AppService],
 })

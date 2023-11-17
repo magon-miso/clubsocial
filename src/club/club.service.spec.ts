@@ -33,8 +33,8 @@ describe('ClubService', () => {
     entityList = [];
     for (let i = 0; i < 3; i++) {
       const entity: ClubEntity = await repository.save({
-        name: faker.lorem.sentence({ min: 3, max: 6 }),
-        description: faker.lorem.paragraphs({ min: 3, max: 6 }),
+        name: faker.company.name(),
+        description: faker.lorem.words(6),
         image: faker.image.url(),
         foundationDate: faker.date.past().toString()
       });
@@ -68,7 +68,7 @@ describe('ClubService', () => {
   it('create should return a new club', async () => {
     const socio: SocioEntity = {
       id: '',
-      username: faker.lorem.sentence({ min: 3, max: 6 }),
+      username: faker.internet.userName(),
       email: faker.internet.email(),
       birthdate: faker.lorem.word(), 
       clubes: [],
@@ -79,8 +79,8 @@ describe('ClubService', () => {
 
     const entity: ClubEntity = {
       id: '',
-      name: faker.lorem.sentence({ min: 3, max: 6 }),
-      description: faker.lorem.paragraphs({ min: 3, max: 6 }),
+      name: faker.company.name(),
+      description: faker.lorem.words(6),
       image: faker.image.url(),
       foundationDate: faker.date.past().toString(),  
       socios: [socioCreated],
@@ -113,8 +113,8 @@ describe('ClubService', () => {
     let entity: ClubEntity = entityList[0];
     entity = {
       ...entity,
-      name: 'New name',
-      description: 'New description',
+      name: 'new-name',
+      description: 'new-description',
     };
     await expect(() => service.update('0', entity)).rejects.toHaveProperty(
       'message', 'The club with the given id was not found',

@@ -23,6 +23,9 @@ export class SocioService {
   }
 
   async create(socio: SocioEntity, ): Promise<SocioEntity> {
+    const emailRegex = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
+    if (!emailRegex.test(socio.email)) 
+      throw new BusinessLogicException('The socio email format is not correct', BusinessError.PRECONDITION_FAILED, );
     return await this.socioRepo.save(socio);
   }
 
@@ -30,7 +33,12 @@ export class SocioService {
     const persistedSocio: SocioEntity = await this.socioRepo.findOne({ where: { id } });
     if (!persistedSocio)
       throw new BusinessLogicException('The socio with the given id was not found', BusinessError.NOT_FOUND,);
-      socio.id = id;
+
+    const emailRegex = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
+    if (!emailRegex.test(socio.email)) 
+      throw new BusinessLogicException('The socio email format is not correct', BusinessError.PRECONDITION_FAILED, );
+  
+    socio.id = id;
     return await this.socioRepo.save(socio);
   }
 
