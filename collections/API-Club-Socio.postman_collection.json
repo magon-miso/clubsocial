@@ -1,0 +1,1485 @@
+{
+	"info": {
+		"_postman_id": "5f3f6db9-b6e7-4de4-82d7-d0c7193e6368",
+		"name": "API-Club-Socio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25748756"
+	},
+	"item": [
+		{
+			"name": "Add a club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"clubId\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\": \"Club El Nogal\",\r\n   \"description\": \"Club social y empresarial insignia de Colombia y hace parte de los mejores clubes de Latinoamérica\", \r\n   \"image\": \"https://upload.wikimedia.org/wikipedia/commons/0/01/2018_Bogot%C3%A1_club_El_Nogal.jpg\", \r\n   \"foundationDate\": \"12-24-1995\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/clubs",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a gastromomic culture",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"Gastronomía Santandereana\",\r\n   \"description\": \"El arte culinario de Santander muestra el carácter y el poder de toda su gente. Sus platos se reconocen por reflejar la diversidad geográfica y cultural, que se distingue claramente del resto del país, ya que sus comidas son muy elaboradas y contienen sabores inigualables. Esto se debe a la conservación de las técnicas y preparaciones de la gastronomía española mezclada con el conocimiento de la cocina indígena. \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/gastronomic-cultures",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"gastronomic-cultures"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"name\": \"Gastronomía Santandereana\",\n    \"description\": \"El arte culinario de Santander muestra el carácter y el poder de toda su gente. Sus platos se reconocen por reflejar la diversidad geográfica y cultural, que se distingue claramente del resto del país, ya que sus comidas son muy elaboradas y contienen sabores inigualables. Esto se debe a la conservación de las técnicas y preparaciones de la gastronomía española mezclada con el conocimiento de la cocina indígena. \"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add a member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"memberId\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"username\": \"chispas\",\r\n   \"email\": \"chipas@clubelnogal.com\", \r\n   \"birthdate\": \"03-13-1978\"\r\n}\r\n ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/members",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"members"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a recipe",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "           {\r\n               \"name\": \"Carne Oreada\",\r\n               \"description\": \"Esta es una de las comidas, con origen en Santander, favoritas por muchos. Se trata de una preparación totalmente distinta que permite sentir mucho más el sabor adobado de la carne. Esta técnica surgió como una solución de los indígenas para preservar los alimentos en tiempos de escasez; sin embargo, el resultado fue tan bueno que se sigue conservando en la actualidad.\", \r\n               \"imageUrl\": \"https://static.wixstatic.com/media/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg/v1/fill/w_539,h_348,al_c,lg_1,q_80,enc_auto/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg\", \r\n               \"instructions\": \"2 Muchachos enteros (aprox. 4kg), solicite a su carnicero que corte el muchacho en sábanas siguiendo el sentido de la fibra, con medio centímetro de grosor. Cebolla cabezona grande. 1 libra de panela rayada. 1 taza de jugo de naranja ácida. 1 cabeza de ajo. sal y comino\", \r\n               \"videoUrl\": \"https://www.youtube.com/watch?v=JyRMZslObPA&ab_channel=DeliciasMundiales\"\r\n           }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/recipes",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1, \n    \"name\": \"Carne Oreada\",\n    \"description\": \"Esta es una de las comidas, con origen en Santander, favoritas por muchos. Se trata de una preparación totalmente distinta que permite sentir mucho más el sabor adobado de la carne. Esta técnica surgió como una solución de los indígenas para preservar los alimentos en tiempos de escasez; sin embargo, el resultado fue tan bueno que se sigue conservando en la actualidad.\",\n    \"imageUrl\": \"https://static.wixstatic.com/media/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg/v1/fill/w_539,h_348,al_c,lg_1,q_80,enc_auto/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg\",\n    \"instructions\": \"2 Muchachos enteros (aprox. 4kg), solicite a su carnicero que corte el muchacho en sábanas siguiendo el sentido de la fibra, con medio centímetro de grosor. Cebolla cabezona grande. 1 libra de panela rayada. 1 taza de jugo de naranja ácida. 1 cabeza de ajo. sal y comino\",\n    \"videoUrl\": \"https://www.youtube.com/watch?v=JyRMZslObPA&ab_channel=DeliciasMundiales\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add a member2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"memberId2\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"username\": \"mango\",\r\n   \"email\": \"mango@clubelnogal.com\", \r\n   \"birthdate\": \"02-27-1978\"\r\n}\r\n ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/members",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"members"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a recipe",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "           {\r\n               \"name\": \"Carne Oreada\",\r\n               \"description\": \"Esta es una de las comidas, con origen en Santander, favoritas por muchos. Se trata de una preparación totalmente distinta que permite sentir mucho más el sabor adobado de la carne. Esta técnica surgió como una solución de los indígenas para preservar los alimentos en tiempos de escasez; sin embargo, el resultado fue tan bueno que se sigue conservando en la actualidad.\", \r\n               \"imageUrl\": \"https://static.wixstatic.com/media/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg/v1/fill/w_539,h_348,al_c,lg_1,q_80,enc_auto/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg\", \r\n               \"instructions\": \"2 Muchachos enteros (aprox. 4kg), solicite a su carnicero que corte el muchacho en sábanas siguiendo el sentido de la fibra, con medio centímetro de grosor. Cebolla cabezona grande. 1 libra de panela rayada. 1 taza de jugo de naranja ácida. 1 cabeza de ajo. sal y comino\", \r\n               \"videoUrl\": \"https://www.youtube.com/watch?v=JyRMZslObPA&ab_channel=DeliciasMundiales\"\r\n           }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/recipes",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1, \n    \"name\": \"Carne Oreada\",\n    \"description\": \"Esta es una de las comidas, con origen en Santander, favoritas por muchos. Se trata de una preparación totalmente distinta que permite sentir mucho más el sabor adobado de la carne. Esta técnica surgió como una solución de los indígenas para preservar los alimentos en tiempos de escasez; sin embargo, el resultado fue tan bueno que se sigue conservando en la actualidad.\",\n    \"imageUrl\": \"https://static.wixstatic.com/media/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg/v1/fill/w_539,h_348,al_c,lg_1,q_80,enc_auto/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg\",\n    \"instructions\": \"2 Muchachos enteros (aprox. 4kg), solicite a su carnicero que corte el muchacho en sábanas siguiendo el sentido de la fibra, con medio centímetro de grosor. Cebolla cabezona grande. 1 libra de panela rayada. 1 taza de jugo de naranja ácida. 1 cabeza de ajo. sal y comino\",\n    \"videoUrl\": \"https://www.youtube.com/watch?v=JyRMZslObPA&ab_channel=DeliciasMundiales\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add a member to a club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{clubId}}/members/{{memberId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{clubId}}",
+						"members",
+						"{{memberId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a recipe to gastronomic culture",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/{{cultureId}}/recipes/{{recipeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"{{cultureId}}",
+								"recipes",
+								"{{recipeId}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "   {\r\n       \"id\": 1, \r\n       \"name\": \"Gastronomía Santandereana\",\r\n       \"description\": \"El arte culinario de Santander muestra el carácter y el poder de toda su gente. Sus platos se reconocen por reflejar la diversidad geográfica y cultural, que se distingue claramente del resto del país, ya que sus comidas son muy elaboradas y contienen sabores inigualables. Esto se debe a la conservación de las técnicas y preparaciones de la gastronomía española mezclada con el conocimiento de la cocina indígena. \", \r\n       \"recipes\": [\r\n           {\r\n               \"id\": 12345,\r\n               \"name\": \"Carne Oreada\",\r\n               \"description\": \"Esta es una de las comidas, con origen en Santander, favoritas por muchos. Se trata de una preparación totalmente distinta que permite sentir mucho más el sabor adobado de la carne. Esta técnica surgió como una solución de los indígenas para preservar los alimentos en tiempos de escasez; sin embargo, el resultado fue tan bueno que se sigue conservando en la actualidad.\", \r\n               \"imageUrl\": \"https://static.wixstatic.com/media/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg/v1/fill/w_539,h_348,al_c,lg_1,q_80,enc_auto/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg\", \r\n               \"instructions\": \"2 Muchachos enteros (aprox. 4kg), solicite a su carnicero que corte el muchacho en sábanas siguiendo el sentido de la fibra, con medio centímetro de grosor. Cebolla cabezona grande. 1 libra de panela rayada. 1 taza de jugo de naranja ácida. 1 cabeza de ajo. sal y comino\", \r\n               \"videoUrl\": \"https://www.youtube.com/watch?v=JyRMZslObPA&ab_channel=DeliciasMundiales\"\r\n           }\r\n       ]\r\n   }"
+				}
+			]
+		},
+		{
+			"name": "Add a not valid member to club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The socio with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{clubId}}/members/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{clubId}}",
+						"members",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a not valid recipe to gastronomic culture",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/{{cultureId}}/recipes/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"{{cultureId}}",
+								"recipes",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The recipe with the given id was not found\"\r\n}\r\n"
+				}
+			]
+		},
+		{
+			"name": "Add a member to not valid club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The club with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/00000000-0000-0000-0000-000000000000/members/{{memberId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"00000000-0000-0000-0000-000000000000",
+						"members",
+						"{{memberId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a recipe to not valid gastronomic culture",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/0/recipes/{{recipeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"0",
+								"recipes",
+								"{{recipeId}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}\r\n"
+				}
+			]
+		},
+		{
+			"name": "Get a member from a club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{clubId}}/members/{{memberId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{clubId}}",
+						"members",
+						"{{memberId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a recipe from a gastronomic culture",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/{{cultureId}}/recipes/{{recipeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"{{cultureId}}",
+								"recipes",
+								"{{recipeId}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"id\": 12345,\r\n    \"name\": \"Carne Oreada\",\r\n    \"description\": \"Esta es una de las comidas, con origen en Santander, favoritas por muchos. Se trata de una preparación totalmente distinta que permite sentir mucho más el sabor adobado de la carne. Esta técnica surgió como una solución de los indígenas para preservar los alimentos en tiempos de escasez; sin embargo, el resultado fue tan bueno que se sigue conservando en la actualidad.\", \r\n    \"imageUrl\": \"https://static.wixstatic.com/media/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg/v1/fill/w_539,h_348,al_c,lg_1,q_80,enc_auto/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg\", \r\n    \"instructions\": \"2 Muchachos enteros (aprox. 4kg), solicite a su carnicero que corte el muchacho en sábanas siguiendo el sentido de la fibra, con medio centímetro de grosor. Cebolla cabezona grande. 1 libra de panela rayada. 1 taza de jugo de naranja ácida. 1 cabeza de ajo. sal y comino\", \r\n    \"videoUrl\": \"https://www.youtube.com/watch?v=JyRMZslObPA&ab_channel=DeliciasMundiales\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get a not valid member from a club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The socio with the given id was not found\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{clubId}}/members/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{clubId}}",
+						"members",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a not valid recipe from a gastronomic culture",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/{{cultureId}}/recipes/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"{{cultureId}}",
+								"recipes",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The recipe with the given id was not found\"\r\n}\r\n"
+				}
+			]
+		},
+		{
+			"name": "Get a member from not valid club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The club with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/00000000-0000-0000-0000-000000000000/members/{{memberId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"00000000-0000-0000-0000-000000000000",
+						"members",
+						"{{memberId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a recipe from not valid gastronomic culture",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/0/recipes/{{recipeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"0",
+								"recipes",
+								"{{recipeId}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}\r\n"
+				}
+			]
+		},
+		{
+			"name": "Get a member not associated to a club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The socio with the given id is not associated with the club\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{clubId}}/members/{{memberId2}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{clubId}}",
+						"members",
+						"{{memberId2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a recipe not associated to a gastronomic culture",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/{{cultureId}}/recipes/{{recipeId2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"{{cultureId}}",
+								"recipes",
+								"{{recipeId2}}"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"The recipe with the given id is not associated to the gastronomic culture\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all members from a club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{clubId}}/members",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{clubId}}",
+						"members"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all recipes from a gastronomic culture",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/{{cultureId}}/recipes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"{{cultureId}}",
+								"recipes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"id\": 12345,\r\n        \"name\": \"Carne Oreada\",\r\n        \"description\": \"Esta es una de las comidas, con origen en Santander, favoritas por muchos. Se trata de una preparación totalmente distinta que permite sentir mucho más el sabor adobado de la carne. Esta técnica surgió como una solución de los indígenas para preservar los alimentos en tiempos de escasez; sin embargo, el resultado fue tan bueno que se sigue conservando en la actualidad.\", \r\n        \"imageUrl\": \"https://static.wixstatic.com/media/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg/v1/fill/w_539,h_348,al_c,lg_1,q_80,enc_auto/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg\", \r\n        \"instructions\": \"2 Muchachos enteros (aprox. 4kg), solicite a su carnicero que corte el muchacho en sábanas siguiendo el sentido de la fibra, con medio centímetro de grosor. Cebolla cabezona grande. 1 libra de panela rayada. 1 taza de jugo de naranja ácida. 1 cabeza de ajo. sal y comino\", \r\n        \"videoUrl\": \"https://www.youtube.com/watch?v=JyRMZslObPA&ab_channel=DeliciasMundiales\"\r\n    }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Get all members from not valid club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The club with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/00000000-0000-0000-0000-000000000000/members",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"00000000-0000-0000-0000-000000000000",
+						"members"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all recipes from not valid gastronomic culture",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/0/recipes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"0",
+								"recipes"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}\r\n"
+				}
+			]
+		},
+		{
+			"name": "Update members from a club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n       \"id\": \"{{memberId2}}\"\r\n   }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{clubId}}/members",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{clubId}}",
+						"members"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update recipes from a gastronomic culture",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n   {\r\n       \"id\": \"{{recipeId2}}\"\r\n   }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/{{cultureId}}/recipes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"{{cultureId}}",
+								"recipes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "   {\r\n       \"id\": 1, \r\n       \"name\": \"Gastronomía Santandereana\",\r\n       \"description\": \"El arte culinario de Santander muestra el carácter y el poder de toda su gente. Sus platos se reconocen por reflejar la diversidad geográfica y cultural, que se distingue claramente del resto del país, ya que sus comidas son muy elaboradas y contienen sabores inigualables. Esto se debe a la conservación de las técnicas y preparaciones de la gastronomía española mezclada con el conocimiento de la cocina indígena. \", \r\n       \"recipes\": [\r\n           {\r\n               \"id\": 12346,\r\n               \"name\": \"Mute Santandereano\",\r\n               \"description\": \"Se conoce a una sopa conocida como mute santandereano y se atribuye su origen a los departamentos de Santander y Norte de Santander. Este mute está hecha a base de maíz pelado, costilla de res, carne de cerdo (incluyendo los callos) con presencia de una gran cantidad de verduras y especias, entre ellas papa criolla (papa nativa colombiana pequeña y de color amarillo), habas y frijoles. El mute, tradicionalmente, puede cocinarse en fogones de leña para obtener un mejor sabor. Otras variantes del mute santandereano se prepara con fundamento en el anterior pero debe llevar yuca, vísceras de cordero - intestinos, corazón, hígado y estómago- y pata de res, todo ello picado en trozos pequeños. La sopa de mute principalmente en la región santandereana puede llevar maíz blanco y frijoles dejándolos hervir, también se le agregan pata de vaca y papa a esta sopa, así se prepara principalmente en Puente Nacional, Sucre, La Belleza, etc.\", \r\n               \"imageUrl\": \"https://cdn.colombia.com/gastronomia/2011/07/28/mute-santandereano-1591.webp\", \r\n               \"instructions\": \"Lavar y dejar en agua con vinagre el callo y la mano de res por 15 minutos. Pasado este tiempo lavar muy bien con agua y poner a cocinar con un poco de sal. Picar la carne en trozos y agregar a la olla presión con el callo y la mano de res. Una vez la olla empiece a pitar dejar 20 minutos. Lavar y picar en cubos la zanahoria, la ahuyama, la arracacha, la papa criolla, la papa negra. Poner a cocinar los garbanzos, los fríjoles y las arvejas en ollas aparte con un poco de sal. Sacar la grasa del caldo que tiene las carnes. Agregar todos los ingredientes precocidos en una olla grande con agua, dejar hervir y cuando ya esté en este punto añadir la papa negra. Luego incorporar la arracacha y dejar cocinar por unos minutos. Mientras tanto hacer el guiso con la cebolla, el tomate y ajo. Añadir a la mezcla los garbanzos cocidos, revolver y 15 minutos antes de que la papa negra se ablande agregar el maíz de mute y la papa criolla. Sofreír un poco el guiso en una sartén con un poco de aceite y añadir el condimento que desee. Picar el cilantro. Agregar la carne cuando ya esté bien cocida o blandita para que se empiecen a concentrar todos los sabores junto con los macarrones. Incorporar el guiso y picar la guasca para agregar a la olla. Aproximadamente 15 minutos antes de servir añadir el cilantro, tapar la olla y una vez se concentren todos los sabores, servir.\", \r\n               \"videoUrl\": \"https://youtu.be/scQIavbmOJM\"\r\n           }\r\n       ]\r\n   }"
+				}
+			]
+		},
+		{
+			"name": "Update not valid members from a club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The socio with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n   }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{clubId}}/members",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{clubId}}",
+						"members"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update not valid recipes from a gastronomic culture",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n   {\r\n       \"id\": \"{{recipeId2}}\"\r\n   }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/{{cultureId}}/recipes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"{{cultureId}}",
+								"recipes"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The recipe with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Update members from a not valid club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The club with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n       \"id\": \"{{memberId2}}\"\r\n   }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/clubs/00000000-0000-0000-0000-000000000000/members",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"00000000-0000-0000-0000-000000000000",
+						"members"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update not valid recipes from a gastronomic culture",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n   {\r\n       \"id\": \"{{recipeId2}}\"\r\n   }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/0/recipes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"0",
+								"recipes"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete a member from a club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{clubId}}/members/{{memberId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{clubId}}",
+						"members",
+						"{{memberId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a recipe from a gastronomic culture",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/{{cultureId}}/recipes/{{recipeId2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"{{cultureId}}",
+								"recipes",
+								"{{recipeId2}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Delete a not valid member from a club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The socio with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{clubId}}/members/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{clubId}}",
+						"members",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a not valid recipe from a gastronomic culture",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/{{cultureId}}/recipes/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"{{cultureId}}",
+								"recipes",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The recipe with the given id was not found\"\r\n}\r\n"
+				}
+			]
+		},
+		{
+			"name": "Delete a member from not valid club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The club with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/00000000-0000-0000-0000-000000000000/members/{{memberId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"00000000-0000-0000-0000-000000000000",
+						"members",
+						"{{memberId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a recipe from not valid gastronomic culture",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/0/recipes/{{recipeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"0",
+								"recipes",
+								"{{recipeId}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}\r\n"
+				}
+			]
+		},
+		{
+			"name": "Delete a member not associated to a club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The socio with the given id is not associated with the club\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{clubId}}/members/{{memberId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{clubId}}",
+						"members",
+						"{{memberId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a recipe not associated to a gastronomic culture",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/gastronomic-cultures/{{cultureId}}/recipes/{{recipeId1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"{{cultureId}}",
+								"recipes",
+								"{{recipeId1}}"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"The recipe with the given id is not associated to the gastronomic culture\"\r\n}"
+				}
+			]
+		}
+	]
+}
