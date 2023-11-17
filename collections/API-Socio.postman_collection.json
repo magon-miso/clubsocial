@@ -1,0 +1,678 @@
+{
+	"info": {
+		"_postman_id": "af483b9f-1b8d-4f3b-b445-b2c6f3a6a90a",
+		"name": "API-Socio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25748756"
+	},
+	"item": [
+		{
+			"name": "Create a member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"memberId\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"username\": \"mango\",\r\n   \"email\": \"mango@clubelnogal.com\", \r\n   \"birthdate\": \"02-27-1978\"\r\n}\r\n ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/members",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"members"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a gastromomic culture",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"Gastronomía Santandereana\",\r\n   \"description\": \"El arte culinario de Santander muestra el carácter y el poder de toda su gente. Sus platos se reconocen por reflejar la diversidad geográfica y cultural, que se distingue claramente del resto del país, ya que sus comidas son muy elaboradas y contienen sabores inigualables. Esto se debe a la conservación de las técnicas y preparaciones de la gastronomía española mezclada con el conocimiento de la cocina indígena. \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/gastronomic-cultures",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"gastronomic-cultures"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"name\": \"Gastronomía Santandereana\",\n    \"description\": \"El arte culinario de Santander muestra el carácter y el poder de toda su gente. Sus platos se reconocen por reflejar la diversidad geográfica y cultural, que se distingue claramente del resto del país, ya que sus comidas son muy elaboradas y contienen sabores inigualables. Esto se debe a la conservación de las técnicas y preparaciones de la gastronomía española mezclada con el conocimiento de la cocina indígena. \"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create a not valid member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"   pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message[0]).to.eql(\"email must be an email\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"username\": \"mango2\",\r\n   \"email\": \"mango.clubelnogal.com\", \r\n   \"birthdate\": \"02-27-1978\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/members",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"members"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a gastromomic culture",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"Gastronomía Santandereana\",\r\n   \"description\": \"El arte culinario de Santander muestra el carácter y el poder de toda su gente. Sus platos se reconocen por reflejar la diversidad geográfica y cultural, que se distingue claramente del resto del país, ya que sus comidas son muy elaboradas y contienen sabores inigualables. Esto se debe a la conservación de las técnicas y preparaciones de la gastronomía española mezclada con el conocimiento de la cocina indígena. \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/gastronomic-cultures",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"gastronomic-cultures"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"name\": \"Gastronomía Santandereana\",\n    \"description\": \"El arte culinario de Santander muestra el carácter y el poder de toda su gente. Sus platos se reconocen por reflejar la diversidad geográfica y cultural, que se distingue claramente del resto del país, ya que sus comidas son muy elaboradas y contienen sabores inigualables. Esto se debe a la conservación de las técnicas y preparaciones de la gastronomía española mezclada con el conocimiento de la cocina indígena. \"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all members",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of members > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/members",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"members"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all gastronomic cultures",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/gastronomic-cultures",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"gastronomic-cultures"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\r\n   {\r\n       \"id\": 1, \r\n       \"name\": \"Gastronomía Santandereana\",\r\n       \"description\": \"El arte culinario de Santander muestra el carácter y el poder de toda su gente. Sus platos se reconocen por reflejar la diversidad geográfica y cultural, que se distingue claramente del resto del país, ya que sus comidas son muy elaboradas y contienen sabores inigualables. Esto se debe a la conservación de las técnicas y preparaciones de la gastronomía española mezclada con el conocimiento de la cocina indígena. \", \r\n       \"countries\": [\r\n           {\r\n               \"id\": \"co\",\r\n               \"name\": \"Colombia\"\r\n           }\r\n       ],\r\n       \"products\": [\r\n           {\r\n               \"id\": 12,\r\n               \"name\": \"Carne de res\",\r\n               \"description\": \"Utilizada para preparar platos con carne fresca, pero sobre todo oreada\", \r\n               \"history\": \"Los indigenas preservaban la carne en tiempos de escasez\",\r\n\t\t\t   \"category\": {\r\n                   \"id\": 1,\r\n                   \"name\": \"Proteina\"\r\n\t\t\t   }\r\n           }\r\n       ], \r\n       \"restaurants\": [\r\n           {\r\n               \"id\": 123,\r\n               \"name\": \"Mercagan Parrilla\",\r\n               \"michelinStars\": 3, \r\n               \"michelinDate\": \"2023-10-27\", \r\n\t\t\t   \"city\": {\r\n                   \"id\": 1234,\r\n                   \"name\": \"Bucaramanga\"\r\n\t\t\t   }\r\n           }\r\n       ], \r\n       \"recipes\": [\r\n           {\r\n               \"id\": 12345,\r\n               \"name\": \"Carne Oreada\",\r\n               \"description\": \"Esta es una de las comidas, con origen en Santander, favoritas por muchos. Se trata de una preparación totalmente distinta que permite sentir mucho más el sabor adobado de la carne. Esta técnica surgió como una solución de los indígenas para preservar los alimentos en tiempos de escasez; sin embargo, el resultado fue tan bueno que se sigue conservando en la actualidad.\", \r\n               \"imageUrl\": \"https://static.wixstatic.com/media/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg/v1/fill/w_539,h_348,al_c,lg_1,q_80,enc_auto/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg\", \r\n               \"instructions\": \"2 Muchachos enteros (aprox. 4kg), solicite a su carnicero que corte el muchacho en sábanas siguiendo el sentido de la fibra, con medio centímetro de grosor. Cebolla cabezona grande. 1 libra de panela rayada. 1 taza de jugo de naranja ácida. 1 cabeza de ajo. sal y comino\", \r\n               \"videoUrl\": \"https://www.youtube.com/watch?v=JyRMZslObPA&ab_channel=DeliciasMundiales\"\r\n           }\r\n       ]\r\n   }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Get a member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/members/{{memberId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"members",
+						"{{memberId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a gastronomic culture",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/gastronomic-cultures/{id}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"{id}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "   {\r\n       \"id\": 1, \r\n       \"name\": \"Gastronomía Santandereana\",\r\n       \"description\": \"El arte culinario de Santander muestra el carácter y el poder de toda su gente. Sus platos se reconocen por reflejar la diversidad geográfica y cultural, que se distingue claramente del resto del país, ya que sus comidas son muy elaboradas y contienen sabores inigualables. Esto se debe a la conservación de las técnicas y preparaciones de la gastronomía española mezclada con el conocimiento de la cocina indígena. \", \r\n       \"countries\": [\r\n           {\r\n               \"id\": \"co\",\r\n               \"name\": \"Colombia\"\r\n           }\r\n       ],\r\n       \"products\": [\r\n           {\r\n               \"id\": 12,\r\n               \"name\": \"Carne de res\",\r\n               \"description\": \"Utilizada para preparar platos con carne fresca, pero sobre todo oreada\", \r\n               \"history\": \"Los indigenas preservaban la carne en tiempos de escasez\",\r\n\t\t\t   \"category\": {\r\n                   \"id\": 1,\r\n                   \"name\": \"Proteina\"\r\n\t\t\t   }\r\n           }\r\n       ], \r\n       \"restaurants\": [\r\n           {\r\n               \"id\": 123,\r\n               \"name\": \"Mercagan Parrilla\",\r\n               \"michelinStars\": 3, \r\n               \"michelinDate\": \"2023-10-27\", \r\n\t\t\t   \"city\": {\r\n                   \"id\": 1234,\r\n                   \"name\": \"Bucaramanga\"\r\n\t\t\t   }\r\n           }\r\n       ], \r\n       \"recipes\": [\r\n           {\r\n               \"id\": 12345,\r\n               \"name\": \"Carne Oreada\",\r\n               \"description\": \"Esta es una de las comidas, con origen en Santander, favoritas por muchos. Se trata de una preparación totalmente distinta que permite sentir mucho más el sabor adobado de la carne. Esta técnica surgió como una solución de los indígenas para preservar los alimentos en tiempos de escasez; sin embargo, el resultado fue tan bueno que se sigue conservando en la actualidad.\", \r\n               \"imageUrl\": \"https://static.wixstatic.com/media/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg/v1/fill/w_539,h_348,al_c,lg_1,q_80,enc_auto/1f62cc_9050112a839045d38955c8fafb82e5f8.jpg\", \r\n               \"instructions\": \"2 Muchachos enteros (aprox. 4kg), solicite a su carnicero que corte el muchacho en sábanas siguiendo el sentido de la fibra, con medio centímetro de grosor. Cebolla cabezona grande. 1 libra de panela rayada. 1 taza de jugo de naranja ácida. 1 cabeza de ajo. sal y comino\", \r\n               \"videoUrl\": \"https://www.youtube.com/watch?v=JyRMZslObPA&ab_channel=DeliciasMundiales\"\r\n           }\r\n       ]\r\n   }"
+				}
+			]
+		},
+		{
+			"name": "Get a not valid member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The socio with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/members/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"members",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a not valid gastronomic culture",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/gastronomic-cultures/0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Update a member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"username\": \"mango\",\r\n   \"email\": \"mango@clubelnogal.com\", \r\n   \"birthdate\": \"03-13-1978\"\r\n}\r\n ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/members/{{memberId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"members",
+						"{{memberId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update a gastronomic culture",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"Cultura Gastronómica Santandereana\",\r\n   \"description\": \"El arte culinario de Santander muestra el carácter y el poder de toda su gente. Sus platos se reconocen por reflejar la diversidad geográfica y cultural, que se distingue claramente del resto del país, ya que sus comidas son muy elaboradas y contienen sabores inigualables. Esto se debe a la conservación de las técnicas y preparaciones de la gastronomía española mezclada con el conocimiento de la cocina indígena. \"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/gastronomic-cultures/{id}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"{id}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"id\": 1, \r\n   \"name\": \"Cultura Gastronómica Santandereana\",\r\n   \"description\": \"El arte culinario de Santander muestra el carácter y el poder de toda su gente. Sus platos se reconocen por reflejar la diversidad geográfica y cultural, que se distingue claramente del resto del país, ya que sus comidas son muy elaboradas y contienen sabores inigualables. Esto se debe a la conservación de las técnicas y preparaciones de la gastronomía española mezclada con el conocimiento de la cocina indígena. \"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Update a not valid member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The socio with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"username\": \"mango\",\r\n   \"email\": \"mango@clubelnogal.com\", \r\n   \"birthdate\": \"03-13-1978\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/members/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"members",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update a not valid gastronomic culture",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"Cultura Gastronómica Santandereana\",\r\n   \"description\": \"El arte culinario de Santander muestra el carácter y el poder de toda su gente. Sus platos se reconocen por reflejar la diversidad geográfica y cultural, que se distingue claramente del resto del país, ya que sus comidas son muy elaboradas y contienen sabores inigualables. Esto se debe a la conservación de las técnicas y preparaciones de la gastronomía española mezclada con el conocimiento de la cocina indígena. \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/gastronomic-cultures/0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete a member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/members/{{memberId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"members",
+						"{{memberId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a gastronomic culture",
+					"originalRequest": {
+						"method": "GET",
+						"header": []
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete a not valid member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The socio with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/members/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"members",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a not valid gastronomic culture",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/gastronomic-cultures/0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"gastronomic-cultures",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
+				}
+			]
+		}
+	]
+}
